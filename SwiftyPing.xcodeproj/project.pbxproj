@@ -12,6 +12,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1AA117CE223C17E300FA3901 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_10 /* SwiftyPing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyPing.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"SwiftyPing::SwiftyPing::Product" /* SwiftyPing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyPing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +47,7 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
+				1AA117CE223C17E300FA3901 /* README.md */,
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_11 /* Tests */,
