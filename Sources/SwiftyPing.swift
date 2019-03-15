@@ -11,11 +11,15 @@
 import Darwin
 import Foundation
 
+@available(OSX 10.12, *)
 public typealias PingResponseClosure = (( _ ping: SwiftyPing, _ response: PingResponse) -> Void)
+
+@available(OSX 10.12, *)
 public typealias ErrorClosure = ((_ ping: SwiftyPing, _ error: NSError) -> Void)
 
 // MARK: SwiftyPing
 // swiftlint:disable:next type_body_length
+@available(OSX 10.12, *)
 public class SwiftyPing: NSObject {
     var host: String
     // swiftlint:disable:next identifier_name
