@@ -112,7 +112,7 @@ public class SwiftyPing: NSObject {
         return (data, nil)
     }
 
-    init(host: String, ipv4Address: Data, configuration: PingConfiguration, queue: DispatchQueue) {
+    public init(host: String, ipv4Address: Data, configuration: PingConfiguration, queue: DispatchQueue) {
         self.host = host
         self.ipv4address = ipv4Address
         self.configuration = configuration
@@ -150,7 +150,7 @@ public class SwiftyPing: NSObject {
         CFRunLoopAddSource(CFRunLoopGetMain(), socketSource, .commonModes)
     }
 
-    convenience init(ipv4Address: String, config configuration: PingConfiguration, queue: DispatchQueue) {
+    public convenience init(ipv4Address: String, config configuration: PingConfiguration, queue: DispatchQueue) {
         var socketAddress = sockaddr_in()
         memset(&socketAddress, 0, MemoryLayout<sockaddr_in>.size)
 
@@ -162,7 +162,7 @@ public class SwiftyPing: NSObject {
 
         self.init(host: ipv4Address, ipv4Address: data as Data, configuration: configuration, queue: queue)
     }
-    convenience init?(host: String, configuration: PingConfiguration, queue: DispatchQueue) {
+    public convenience init?(host: String, configuration: PingConfiguration, queue: DispatchQueue) {
         let result = SwiftyPing.getIPv4AddressFromHost(host: host)
         if let address = result.data {
             self.init(host: host, ipv4Address: address, configuration: configuration, queue: queue)
