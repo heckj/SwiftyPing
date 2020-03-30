@@ -1,0 +1,49 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        run-config:
+          - { scheme: 'SwiftyPing-Package', destination: 'platform=macOS' }
+          - { scheme: 'SwiftyPing-Package', destination: 'platform=iOS Simulator,OS=13.4,name=iPhone 8' }
+
+    steps:
+    - name: Checkout Project
+      uses: actions/checkout@v2
+
+    - name: Show the currently detailed version of Xcode for CLI
+      run: xcode-select -p
+
+    - name: Show what's in Applications
+      run: ls -al /Applications
+
+    - name: Switch to Xcode 11.4
+      run: sudo xcode-select -s /Applications/Xcode_11.4.app
+
+    - name: Show Build Version
+      run: xcodebuild -version
+
+    - name: Show Build Settings
+      run: xcodebuild -showBuildSettings
+
+    # - name: xcodebuild -showTestPlans
+    #   run: xcodebuild -showTestPlans
+
+    - name: Show Build SDK
+      run: xcodebuild -showsdks
+
+    - name: Show Available Destinations
+      run: xcodebuild -scheme '${{ matrix.run-config['scheme'] }}' -showdestinations
+
+    - name: Homebrew build helpers install
+      run: |
+        brew install swiftlint
+        brew install swiftformat
+
+    - name: build and test
+      run: xcodebuild clean test -scheme '${{ matrix.run-config['scheme'] }}' -destination '${{ matrix.run-config['destination'] }}' -showBuildTimingSummary
