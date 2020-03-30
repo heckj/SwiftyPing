@@ -1,6 +1,3 @@
-included:
-  - CNA
-  - CNATests
 analyzer_rules:
   - unused_import
   - unused_private_declaration
